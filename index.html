@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cozy Movie Picker 🍿</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>🍿 Cozy Movie Picker</h1>
+        <p class="sub">Välj en genre (eller Random) och låt popcorn-hinken bestämma ✨</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="stage">
+        <div class="spark"></div><div class="spark"></div><div class="spark"></div><div class="spark"></div><div class="spark"></div>
+        <div class="glitterField" id="glitterField" aria-hidden="true"></div>
+
+        <div class="bucketWrap">
+          <div class="slipLayer">
+            <div class="slip" id="slip" aria-live="polite">
+              <div class="slipTop">
+                <span class="pill">TONIGHT’S PICK</span>
+                <span class="pill" id="genrePill">Genre: …</span>
+                <span class="pill" id="yearPill">År: …</span>
+                <span style="margin-left:auto" class="pill" id="countInfo">🍿</span>
+              </div>
+              <div class="movieTitle" id="movieTitle"></div>
+              <p class="movieNote" id="movieNote"></p>
+              <div class="tear">
+                <span id="modeInfo">🎬 Random</span>
+                <span id="timeStamp">✨</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bucketLayer" aria-hidden="true">
+            <div class="popcornTop">
+              <div class="kernel k1"></div><div class="kernel k2"></div><div class="kernel k3"></div><div class="kernel k4"></div>
+              <div class="kernel k5"></div><div class="kernel k6"></div><div class="kernel k7"></div><div class="kernel k8"></div>
+            </div>
+
+            <div class="bucket">
+              <div class="stripe s1"></div><div class="stripe s2"></div><div class="stripe s3"></div><div class="stripe s4"></div>
+              <div class="label">
+                <strong>MOVIE NIGHT</strong>
+                <span>Pick one • press play</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="burst" id="burst"></div>
+        </div>
+      </div>
+
+      <div class="genres" id="genreChips"></div>
+
+      <div class="controls">
+        <button class="btn" id="pickBtn">Välj film</button>
+        <button class="btn secondary" id="rerollBtn" title="Välj igen">Välj igen</button>
+      </div>
+
+      <details>
+        <summary>✍️ Ändra film-listan (enkelt)</summary>
+        <p style="margin:0 0 10px; color:rgba(255,255,255,.74); font-size:13px;">
+          En film per rad, format: <b>Titel — Genre1, Genre2 — År</b><br />
+          Ex: <b>Interstellar — Sci-Fi, Drama — 2014</b><br />
+          (Om år saknas visas “Okänt”.)
+        </p>
+        <textarea id="movieInput" spellcheck="false"></textarea>
+      </details>
+
+      <div class="footer">
+        <div>Tips: år och genre visas direkt på lappen ✨</div>
+        <div id="status">Redo ✨</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
