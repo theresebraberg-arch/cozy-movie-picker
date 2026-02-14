@@ -386,6 +386,7 @@ const defaultMovies = [
   }
 
   async function pickMovie(){
+    openSlip();
     const allMovies = getMoviesFromInput();
     if(allMovies.length === 0){
       statusEl.textContent = "Lägg in minst 1 film i listan ✍️";
@@ -436,18 +437,28 @@ const defaultMovies = [
   genrePill.textContent = "Genre: …";
   yearPill.textContent = "År: …";
   modeInfo.textContent = "🎬 Random";
+  closeSlip();
 
   pickBtn.addEventListener("click", pickMovie);
   rerollBtn.addEventListener("click", pickMovie);
 
   buildGenreChips();
 
-  document.addEventListener("click", function (e) {
-  if (slip.classList.contains("show")) {
-    if (!slip.contains(e.target) &&
-        !e.target.closest("#pickBtn") &&
-        !e.target.closest("#rerollBtn")) {
-      slip.classList.remove("show");
-    }
+  function closeSlip() {
+  slip.classList.add("is-closed");
+}
+
+function openSlip() {
+  slip.classList.remove("is-closed");
+}
+
+// Stäng om man klickar utanför lappen
+document.addEventListener("click", (e) => {
+  const clickedOutsideSlip = !slip.contains(e.target);
+  const clickedPick = e.target.closest("#pickBtn");
+  const clickedReroll = e.target.closest("#rerollBtn");
+
+  if (clickedOutsideSlip && !clickedPick && !clickedReroll) {
+    closeSlip();
   }
 });

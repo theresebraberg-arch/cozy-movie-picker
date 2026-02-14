@@ -381,3 +381,10 @@
       color: rgba(255,255,255,.70);
       font-size: 12px;
     }
+    /* Stäng lappen när man klickar utanför */
+#slip.is-closed {
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
