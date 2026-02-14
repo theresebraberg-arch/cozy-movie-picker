@@ -208,7 +208,8 @@ const defaultMovies = [
     "Shrek — Animation, Komedi — 2001",
     "The Lion King (1994) — Animation, Drama — 1994",
     "The Lion King (2019) — Animation, Drama — 2019",
-    "Zootopia — Animation, Komedi — 2016"
+    "Zootopia — Animation, Komedi — 2016",
+    "The Housemaid - Thriller - 2025"
   ];
 
   const pickBtn = document.getElementById("pickBtn");
@@ -440,3 +441,13 @@ const defaultMovies = [
   rerollBtn.addEventListener("click", pickMovie);
 
   buildGenreChips();
+
+  document.addEventListener("click", function (e) {
+  if (slip.classList.contains("show")) {
+    if (!slip.contains(e.target) &&
+        !e.target.closest("#pickBtn") &&
+        !e.target.closest("#rerollBtn")) {
+      slip.classList.remove("show");
+    }
+  }
+});
